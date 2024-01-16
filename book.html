@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet'>
+</head>
+
+<head>
+    <title>PT Booking System</title>
+    <style>
+        :root {
+            --hover-color: #FF5733;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--body-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #booking-system {
+            text-align: center;
+            padding: 1dvh;
+        }
+
+        .calendar__header {
+            font-size: var(--h2-font-size);
+            color: var(--title-color-black);
+            margin-bottom: 20px;
+        }
+
+        .calendar__table {
+            margin-top: -17px;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calendar__table th,
+        .calendar__table td {
+            border: 1px solid var(--main-color-dark);
+            padding: 15px;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+
+        .available:hover {
+            background-color: var(--hover-color);
+            color: var(--title-color);
+            cursor: pointer;
+        }
+
+        .past {
+            background-color: var(--main-color-gray);
+        }
+
+        .time-slot {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: var(--main-color-alt);
+            border: 2px solid var(--main-color-dark);
+            padding: 10px;
+            z-index: var(--z-fixed);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .time-slot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .time-slot-header h3 {
+            margin: 0;
+            color: var(--title-color-black);
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--title-color-black);
+            font-size: 1.2rem;
+        }
+
+        .close-button:hover {
+            background-color: transparent;
+        }
+
+
+        .time-slot button:hover {
+            background-color: var(--main-color-light);
+        }
+
+
+        @media screen and (min-width: 1024px) {
+            .calendar__table {
+                width: 60%;
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            .calendar__table {
+                width: 80%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .calendar__table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<header class="navbar" id="navbar">
+    <nav class="nav container">
+        <a href="/index.html" class="nav__logo">
+            <img src="./assets/img/fithub_logo.png" alt="logo">
+            FITHUB
+        </a>
+        <div class="nav__menu " id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="/#" class="nav__link active-link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/#program" class="nav__link">Program</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/#aboutus" class="nav__link">About Us</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/#membership" class="nav__link active-link">Membership</a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="/#our_trainers" class="nav__link">PTs</a>
+                </li>
+
+                <div class="nav__link">
+                    <a href="/signup.html" class="button nav__button">Register</a>
+                </div>
+            </ul>
+
+        </div>
+
+        <div class="nav__hamburger" id="nav__hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+        <div class="nav__close" id="nav-close">
+    </nav>
+</header>
+
+<body>
+
+    <p class="book_description" style="padding-top: 100px;  text-align: center; padding-bottom: 3%;  ">
+        Book a precious time with our Personal Trainer from the calendar!
+    </p>
+    <div id="booking-system">
+        <div id="calendar"></div>
+        <div id="time-slot-popup" class="time-slot"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calendarElement = document.getElementById("calendar");
+            const timeSlotPopup = document.getElementById("time-slot-popup");
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); 
+
+            generateCalendar(calendarElement);
+
+            calendarElement.addEventListener("click", function (event) {
+                if (event.target.tagName === 'TD' && event.target.classList.contains("available")) {
+                    showTimeSlots(event.target.dataset.dateString);
+                }
+            });
+
+            function generateCalendar(element) {
+                const currentDate = new Date();
+                currentDate.setDate(1);
+                const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+                const firstDayOfMonth = currentDate.getDay();
+                let date = 1;
+
+                let calendarHTML = `<table class="calendar__table"><tr>`;
+
+                const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                for (let day of daysOfWeek) {
+                    calendarHTML += `<th>${day}</th>`;
+                }
+
+                calendarHTML += `</tr><tr>`;
+
+                for (let i = 0; i < 7; i++) {
+                    if (i < firstDayOfMonth) {
+                        calendarHTML += `<td></td>`;
+                    } else {
+                        const dateCopy = new Date(currentDate.getFullYear(), currentDate.getMonth(), date);
+                        let classes = dateCopy < today ? 'past' : 'available';
+                        calendarHTML += `<td class="${classes}" data-date-string="${dateCopy.toDateString()}">${date}</td>`;
+                        date++;
+                    }
+                }
+
+                while (date <= lastDayOfMonth) {
+                    calendarHTML += `</tr><tr>`;
+                    for (let i = 0; i < 7 && date <= lastDayOfMonth; i++) {
+                        const dateCopy = new Date(currentDate.getFullYear(), currentDate.getMonth(), date);
+                        let classes = dateCopy < today ? 'past' : 'available';
+                        calendarHTML += `<td class="${classes}" data-date-string="${dateCopy.toDateString()}">${date}</td>`;
+                        date++;
+                    }
+                }
+
+                calendarHTML += `</tr></table>`;
+                element.innerHTML = calendarHTML;
+            }
+
+            function showTimeSlots(dateString) {
+                timeSlotPopup.innerHTML = `
+                    <div class="time-slot-header">
+                        <h3>Available Times</h3>
+                        <button class="close-button" onclick="document.getElementById('time-slot-popup').style.display='none'">&times;</button>
+                    </div>
+                `;
+
+                for (let hour = 8; hour <= 17; hour++) {
+                    const timeButton = document.createElement("button");
+                    timeButton.textContent = `${hour}:00`;
+                    timeButton.onclick = function () {
+                        alert(`Time slot ${hour}:00 booked on ${dateString}`);
+                        timeSlotPopup.style.display = 'none';
+                    };
+                    timeSlotPopup.appendChild(timeButton);
+                }
+
+                timeSlotPopup.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+
+<footer class="footer section" id="footer">
+    <hr class="footer__divider">
+    <div class="footer__container container grid">
+        <div>
+            <a href="/index.html" class="footer__logo">
+                <img src="./assets/img/fithub_logo.png" alt="footer logo"> FITHUB
+            </a>
+            <p class="footer__description">
+                Keep being posted about recent news, subscribe to our newsletter!
+            </p>
+            <form action="#" class="footer__form" id="contact-form">
+                <input type="email" name="user-email" placeholder="Email" class="footer__input" id="contact-user">
+                <button type="submit" class="button">
+                    Subscribe
+                </button>
+            </form>
+            <p class="footer__message" id="contact-message"></p>
+        </div>
+        <div class="footer__content">
+            <div>
+                <h3 class="footer__title">SERVICES</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="/#aboutus" class="footer__link">Bodybuilding</a>
+                    </li>
+                    <li>
+                        <a href="/#aboutus" class="footer__link">Kickbox</a>
+                    </li>
+                    <li>
+                        <a href="/#aboutus" class="footer__link">Swimming</a>
+                    </li>
+                    <li>
+                        <a href="/#aboutus" class="footer__link">Plates/Yoga</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">MEMBERSHIP</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="/#membership" class="footer__link">Bronze</a>
+                    </li>
+                    <li>
+                        <a href="/#membership" class="footer__link">Gold</a>
+                    </li>
+                    <li>
+                        <a href="/#membership" class="footer__link">Premium</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer__title">COMPANY</h3>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#aboutus" class="footer__link">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Careers</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer__link">Branches</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div id="mymap"></div>
+
+    </section>
+    <div class="container">
+        <div class="footer__group">
+            <ul class="footer__social">
+                <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                    <img src="/assets/img/facebook.png" />
+                </a>
+                <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                    <img src="/assets/img/twitter.png" />
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                    <img src="/assets/img/Instagram_icon.png" />
+                </a>
+            </ul>
+            <span class="footer__copy">© 2024 Copyright Fithub. All rights have been reserved.</span>
+        </div>
+    </div>
+    
+</footer>
+
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet'>
+</head>
+
+
+<body>
+    <header class="navbar" id="navbar">
+        <nav class="nav container">
+            <a href="/index.html" class="nav__logo">
+                <img src="./assets/img/fithub_logo.png" alt="logo">
+                FITHUB
+            </a>
+            <div class="nav__menu " id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#program" class="nav__link">Program</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#aboutus" class="nav__link">About Us</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#membership" class="nav__link">Membership</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#our_trainers" class="nav__link">PTs</a>
+                    </li>
+
+                    <div class="nav__link">
+                        <a href="/signup.html" class="button nav__button">Register</a>
+                    </div>
+                </ul>
+
+            </div>
+
+            <div class="nav__hamburger" id="nav__hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav__close" id="nav-close">
+
+        </nav>
+    </header>
+    <main class="main">
+        <section class="home section div-transition" id="home" style="opacity: 0.963794; transform: scale(0.99819);">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h2 class="home__subtitle">ELEVATE</h2>
+                    <h1 class="home__title">YOUR FITNESS</h1>
+                    <div id="dumbbell">
+                        <i class="fa-solid fa-dumbbell fa-2xl"></i>
+                        <img src="/assets/img/dumbell.png" alt="Dumbbell Image">
+                    </div>
+                    <p class="home__description">
+                        Welcome to FitHub, where we empower you to shape your body and embrace a fuller life through
+                        fitness.
+                    </p>
+
+                    <a href="#" class="button button__flex">
+                        Explore More <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+                <div class="home__images">
+                    <img src="./assets/img/home_image copy 2.png" alt="homeimage" class="home__img">
+                </div>
+            </div>
+
+        </section>
+
+        <section class="program section div-transition" id="program" style="opacity: 0; transform: scale(0.95);">
+            <div class="container">
+                <div class="section__data">
+                    <h1 class="section__subtitle">Training Modules</h1>
+                    <div class="section__titles">
+                        <h1 class="section__title-border">ULTIMATE YOUR</h1>
+                        <h1 class="section__title">FITNESS JOURNEY</h1>
+                    </div>
+                </div>
+                <div class="program__container grid">
+                    <article class="program__card">
+                        <div class="program__shape">
+                            <img src="./assets/img/arm.png" alt="program image" class="program__img">
+                        </div>
+                        <h3 class="program__title">Bodybuilding</h3>
+                        <p class="program__description">
+                            Bodybuilding involves targeted muscle tension to promote muscle growth and definition.
+                        </p>
+                        <a href="#" class="program__button"><i class="ri-arrow-right-line"></i></a>
+                    </article>
+
+                    <article class="program__card">
+                        <div class="program__shape">
+                            <img src="./assets/img/kickboxing.png" alt="program image" class="program__img">
+                        </div>
+                        <h3 class="program__title">Kickbox</h3>
+                        <p class="program__description">
+                            High-intensity cardio workout combining martial arts and boxing for improved fitness and
+                            agility.
+                        </p>
+                        <a href="#" class="program__button"><i class="ri-arrow-right-line"></i></a>
+                    </article>
+
+                    <article class="program__card">
+                        <div class="program__shape">
+                            <img src="./assets/img/swimming.png" alt="program image" class="program__img">
+                        </div>
+                        <h3 class="program__title">Swimming</h3>
+                        <p class="program__description">
+                            Dive into fitness with swimming! A full-body workout that boosts endurance and strength.
+                        </p>
+                        <a href="#" class="program__button"><i class="ri-arrow-right-line"></i></a>
+                    </article>
+
+                    <article class="program__card">
+                        <div class="program__shape">
+                            <img src="./assets/img/yoga.png" alt="program image" class="program__img">
+                        </div>
+                        <h3 class="program__title">Plates/Yoga</h3>
+                        <p class="program__description">
+                            A holistic fitness fusion - core strength, flexibility, and inner balance.
+                        </p>
+                        <a href="#" class="program__button"><i class="ri-arrow-right-line"></i></a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="aboutus section div-transition" id="aboutus" style="opacity: 0; transform: scale(0.95);">
+            <div class="aboutus__overflow">
+                <div class="aboutus__container container grid">
+                    <div class="aboutus__content">
+                        <div class="section__data">
+                            <div class="section__titles">
+                                <h1 class="section__title">ABOUT US</h1>
+                            </div>
+                        </div>
+
+                        <p class="aboutus__description">
+                            Experience unparalleled health and fitness at Fithub.<br>
+                            With a state-of-the-art facility and highly trained staff, you can trust that your health
+                            and well-being are in good hands.<br>
+                            We are committed to providing a comprehensive fitness experience that meets your needs and
+                            enhances your quality of life.</p>
+                        </p>
+                        <h2 class="section__subtitle">Be the best version of yourself!</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-wrapper" id="myCarousel">
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym1.jpg">
+                </div>
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym2.jpg" alt="Image">
+                </div>
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym3.jpg" alt="Image">
+                </div>
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym4.jpg" alt="Image">
+                </div>
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym5.jpg" alt="Image">
+                </div>
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym6.jpg">
+                </div>
+                <div class="slide" data-slide>
+                    <img src="./assets/img/gym7.jpg">
+                </div>
+
+                <button class="btn previous" data-button="previous">
+                    <i class="material-icons">chevron_left</i>
+                </button>
+                <button class="btn next" data-button="next">
+                    <i class="material-icons">chevron_right</i>
+                </button>
+
+
+            </div>
+        </section>
+
+        <section id="our_trainers">
+            <div class="section__data">
+                <div class="section__titles">
+                    <h1 class="section__title-border">MEET OUR CREW</h1>
+                </div>
+            </div>
+            <div class="trainers">
+                <div class="trainer-card" onclick="redirectToBookPage('/book.html')">
+                    <div class="trainers__content">
+                        <h6>Ronnie Coleman</h6>
+                        <h5>Personal Trainer</h5>
+                    </div>
+                </div>
+                <div class="trainer-card" onclick="redirectToBookPage('/book.html')">
+                    <div class="trainers__content">
+                        <h6>Chris Bumstead</h6>
+                        <h5>Swimming Trainer</h5>
+                    </div>
+                </div>
+                <div class="trainer-card" onclick="redirectToBookPage('/book.html')">
+                    <div class="trainers__content">
+                        <h6>Veronika An</h6>
+                        <h5>Kickbox</h5>
+                    </div>
+                </div>
+                <div class="trainer-card" onclick="redirectToBookPage('/book.html')">
+                    <div class="trainers__content">
+                        <h6>Anfisa Badalova</h6>
+                        <h5>Yoga/Pilates</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="membership section div-transition" id="membership" style="opacity: 0; transform: scale(0.95);">
+            <div class="container">
+                <div class="section__data">
+                    <div class="section__titles">
+                        <h1 class="section__title-border">LET US INTRODUCE THE</h1>
+                        <h1 class="section__title">SPECIAL PLANS</h1>
+                    </div>
+                </div>
+
+                <div class="pricing__container container grid">
+
+                    <article class="pricing__card">
+                        <header class="pricing__header">
+                            <div class="pricing__shape">
+                                <img src="./assets/img/badge.png" alt="membership image" class="pricing__img">
+                            </div>
+                            <h1 class="pricing__title">BRONZE MEMBERSHIP</h1>
+                            <h2 class="pricing__number">€25<span class="monthly">/month</span></h2>
+                        </header>
+
+                        <ul class="pricing__list">
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>Up to 5h weekly access
+                            </li>
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>Free access to sauna
+                            </li>
+                            <li class="pricing__item pricing__item-opacity">
+                                <i class="ri-checkbox-circle-line"></i>Access to one club
+                            </li>
+                            <li class="pricing__item pricing__item-opacity">
+                                <i class="ri-checkbox-circle-line"></i>Free promo class
+                            </li>
+                        </ul>
+                        <a href="/signup.html" class="button button__flex pricing__button">
+                            Purchase Now <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <article class="pricing__card pricing__card-active">
+                        <header class="pricing__header">
+                            <div class="pricing__shape">
+                                <img src="./assets/img/medal.png" alt="membership image" class="pricing__img">
+                            </div>
+                            <h1 class="pricing__title">GOLD MEMBERSHIP</h1>
+                            <h2 class="pricing__number">€39<span class="monthly">/month</span></h2>
+                        </header>
+                        <ul class="pricing__list">
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>Up to 10h weekly access
+                            </li>
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>Access to swimming pool & sauna
+                            </li>
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>2h free PT session/week
+                            </li>
+                            <li class="pricing__item pricing__item-opacity">
+                                <i class="ri-checkbox-circle-line"></i>Free towel, sweatshirt and lockers
+                            </li>
+                            <li class="pricing__item pricing__item-opacity">
+                                <i class="ri-checkbox-circle-line"></i>Free access to 2 selected clubs
+                            </li>
+
+                        </ul>
+                        <a href="/signup.html" class="button button__flex pricing__button">
+                            Purchase Now <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <article class="pricing__card">
+                        <header class="pricing__header">
+                            <div class="pricing__shape">
+                                <img src="./assets/img/diamond.png" alt="membership image" class="pricing__img">
+                            </div>
+                            <h1 class="pricing__title">PREMIUM MEMBERSHIP</h1>
+                            <h2 class="pricing__number">€59<span class="monthly">/month</span></h2>
+                        </header>
+                        <ul class="pricing__list">
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>Up to 15h weekly access
+                            </li>
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>Access to all activities
+                            </li>
+                            <li class="pricing__item">
+                                <i class="ri-checkbox-circle-line"></i>4h free PT session/week
+                            </li>
+                            <li class="pricing__item pricing__item-opacity">
+                                <i class="ri-checkbox-circle-line"></i>Access to all utility services
+                            </li>
+                            <li class="pricing__item pricing__item-opacity">
+                                <i class="ri-checkbox-circle-line"></i>Free access to all clubs
+                            </li>
+
+                        </ul>
+                        <a href="/signup.html" class="button button__flex pricing__button">
+                            Purchase Now <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer section" id="footer">
+        <hr class="footer__divider">
+        <div class="footer__container container grid">
+            <div>
+                <a href="/index.html" class="footer__logo">
+                    <img src="./assets/img/fithub_logo.png" alt="footer logo"> FITHUB
+                </a>
+                <p class="footer__description">
+                    Keep being posted about recent news, subscribe to our newsletter!
+                </p>
+                <form action="#" class="footer__form" id="contact-form">
+                    <input type="email" name="user-email" placeholder="Email" class="footer__input" id="contact-user">
+                    <button type="submit" class="button">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="footer__message" id="contact-message"></p>
+            </div>
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">SERVICES</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="/signup.html" class="footer__link">Bodybuilding</a>
+                        </li>
+                        <li>
+                            <a href="/signup.html" class="footer__link">Kickbox</a>
+                        </li>
+                        <li>
+                            <a href="/signup.html" class="footer__link">Swimming</a>
+                        </li>
+                        <li>
+                            <a href="/signup.html" class="footer__link">Plates/Yoga</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">MEMBERSHIP</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="/signup.html" class="footer__link">Bronze</a>
+                        </li>
+                        <li>
+                            <a href="/signup.html" class="footer__link">Gold</a>
+                        </li>
+                        <li>
+                            <a href="/signup.html" class="footer__link">Premium</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">COMPANY</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#aboutus" class="footer__link">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Careers</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Branches</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div id="mymap"></div>
+
+        </section>
+        <div class="container">
+            <div class="footer__group">
+                <ul class="footer__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <img src="/assets/img/facebook.png" />
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <img src="/assets/img/twitter.png" />
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <img src="/assets/img/Instagram_icon.png" />
+                    </a>
+                </ul>
+                <span class="footer__copy">© 2024 Copyright Fithub. All rights have been reserved.</span>
+            </div>
+        </div>
+        
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <img src="/assets/img/arrow_up.png"></img>
+    </a>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css"> <!-- Link to external CSS file -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Link to Google Fonts -->
+</head>
+
+<body>
+    <header class="navbar" id="navbar">
+        <nav class="nav container">
+            <a href="/index.html" class="nav__logo">
+                <img src="./assets/img/fithub_logo.png" alt="logo"> <!-- Logo image -->
+                FITHUB
+            </a>
+            <div class="nav__menu " id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="/#" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#program" class="nav__link">Program</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#aboutus" class="nav__link">About Us</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#membership" class="nav__link">Membership</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/#our_trainers" class="nav__link">PTs</a>
+                    </li>
+
+                    <div class="nav__link">
+                        <a href="/signup.html" class="button nav__button">Register</a> <!-- Register button -->
+                    </div>
+                </ul>
+
+            </div>
+
+            <div class="nav__hamburger" id="nav__hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav__close" id="nav-close">
+        </nav>
+    </header>
+    <section>   
+        <div class="container">
+            <div class="section__data">
+                <div class="section__titles" style="padding-top: 70px;">
+                    <h1 class="section__title-border">SIGN UP</h1>
+                    <h1 class="section__title">TO FIND YOUR "FITHUB"</h1>
+                </div>
+            </div>
+            <form class="signup__form" id="signup-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" name="surname" class="form-control" placeholder="Surname" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="purpose">Program</label>
+                    <select id="purpose" name="purpose" class="form-control" required>
+                        <option value="swimming">Swimming</option>
+                        <option value="bodybuilding">Bodybuilding</option>
+                        <option value="kickbox">Kickbox</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="crossfit">CrossFit</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="branch">Branch</label>
+                    <select id="branch" name="branch" class="form-control" required>
+                        <option value="Mustek">Mustek</option>
+                        <option value="Karlovo namesti">Karlovo namesti</option>
+                        <option value="Holešovice">Holešovice</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="plan">Plan</label>
+                    <select id="plan" name="plan" class="form-control" required>
+                        <option value="bronze">Bronze</option>
+                        <option value="gold">Gold</option>
+                        <option value="premium">Premium</option>
+                    </select>
+                </div>
+                <button type="submit" class="button button__flex signup_button">
+                    Sign Up <i class="ri-arrow-right-line"></i> <!-- Sign Up button with arrow icon -->
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer section" id="footer">
+        <hr class="footer__divider">
+        <div class="footer__container container grid">
+            <div>
+                <a href="/index.html" class="footer__logo">
+                    <img src="./assets/img/fithub_logo.png" alt="footer logo"> FITHUB
+                </a>
+                <p class="footer__description">
+                    Keep being posted about recent news, subscribe to our newsletter!
+                </p>
+                <form action="#" class="footer__form" id="contact-form">
+                    <input type="email" name="user-email" placeholder="Email" class="footer__input" id="contact-user">
+                    <button type="submit" class="button">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="footer__message" id="contact-message"></p>
+            </div>
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">SERVICES</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="/#aboutus" class="footer__link">Bodybuilding</a>
+                        </li>
+                        <li>
+                            <a href="/#aboutus" class="footer__link">Kickbox</a>
+                        </li>
+                        <li>
+                            <a href="/#aboutus" class="footer__link">Swimming</a>
+                        </li>
+                        <li>
+                            <a href="/#aboutus" class="footer__link">Plates/Yoga</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">PRICING</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="/#membership" class="footer__link">Bronze</a>
+                        </li>
+                        <li>
+                            <a href="/#membership" class="footer__link">Gold</a>
+                        </li>
+                        <li>
+                            <a href="/#membership" class="footer__link">Premium</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">COMPANY</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="/#aboutus" class="footer__link">About Us</a>
+                        </li>
+                        <li>
+                            <a href="/#aboutus" class="footer__link">Careers</a>
+                        </li>
+                        <li>
+                            <a href="/#aboutus" class="footer__link">Branches</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer__group">
+                <ul class="footer__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <img src="/assets/img/facebook.png" />
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                        <img src="/assets/img/twitter.png" />
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <img src="/assets/img/Instagram_icon.png" />
+                    </a>
+                </ul>
+                <span class="footer__copy">© 2024 Copyright Fithub. All rights have been reserved.</span>
+            </div>
+        </div>
+
+        <a href="#" class="scrollup" id="scroll-up">
+            <img src="/assets/img/arrow_up.png"></img> <!-- Scroll to top button -->
+        </a>
+
+    </footer>
+
+</body>
+
+</html>
