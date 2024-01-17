@@ -1,34 +1,13 @@
-const navMenu = document.getElementById("nav-menu"),
-    navToggle = document.getElementById("nav__hamburger"),
-    navClose = document.getElementById("nav-close");
-
-if (navToggle) {
-    navToggle.addEventListener("click", () => {
-        navMenu.classList.add("show-menu");
-    });
+function hideSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.display = "none";
 }
 
+function showSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.style.display = "flex";
+}
 
-const hamburgerButton = document.getElementById("nav__hamburger");
-const closeButton = document.getElementById("nav-close");
-const sideMenu = document.getElementById("nav-menu");
-
-const toggleMenu = () => {
-    if (hamburgerButton.style.display === "block") {
-        hamburgerButton.style.display = "none";
-        closeButton.style.display = "block";
-        sideMenu.style.transform = "translateX(0)";
-        sideMenu.style.display = "block";
-    } else {
-        hamburgerButton.style.display = "block";
-        closeButton.style.display = "none";
-        sideMenu.style.transform = "translateX(-100%)";
-        sideMenu.style.display = "none";
-    }
-};
-
-hamburgerButton.addEventListener("click", toggleMenu);
-closeButton.addEventListener("click", toggleMenu);
 
 const scrollHeader = () => {
     const navbar = document.getElementById("navbar");
@@ -38,6 +17,7 @@ const scrollHeader = () => {
         navbar.classList.remove('bg-header');
     }
 };
+
 window.addEventListener("scroll", scrollHeader);
 
 const navLinks = document.querySelectorAll('.nav__menu a');
@@ -96,8 +76,8 @@ window.addEventListener('scroll', () => {
 });
 
 const contactForm = document.getElementById('contact-form'),
-contactMessage = document.getElementById('contact-message'),
-contactUser = document.getElementById('contact-user');
+    contactMessage = document.getElementById('contact-message'),
+    contactUser = document.getElementById('contact-user');
 
 const sendEmail = (e) => {
     e.preventDefault();
@@ -152,7 +132,7 @@ buttons.forEach((button) => {
                 }
                 updateCarousel(currSlide);
             }, 2000);
-        }, 3000); 
+        }, 3000);
     });
 });
 
@@ -192,10 +172,8 @@ new mapboxgl.Marker({
     anchor: 'bottom'
 }).setLngLat(gps).addTo(map).setPopup(popup);
 
-btnreset.addEventListener('click', () => {
-    form.classList.remove('validate');
-});
-
 function redirectToBookPage(url) {
-    window.location.href = url;
+    window.location.pathname = '/Fithub' + url;
 }
+
+
